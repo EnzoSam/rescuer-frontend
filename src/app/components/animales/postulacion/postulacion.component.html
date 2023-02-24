@@ -1,0 +1,24 @@
+<div *ngIf="animal" class="container col-md-4">
+    <form  #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{page_title}}</mat-card-title>
+          <mat-card-subtitle>{{page_subTitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>                    
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>comentario</mat-label>
+              <input #comentario="ngModel" name="comentario" [(ngModel)]= "postulacion.comentario"  matInput placeholder="Comentario">
+            </mat-form-field>
+          </p>   
+                                     
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+      </div>
+    </form>
+    </div>

@@ -1,0 +1,17 @@
+mat-card
+{
+    width: 150px;
+    height: 140px;
+}
+
+mat-card-content
+{
+    display: flex;    
+    justify-content: center;
+}
+
+mat-card-actions
+{
+    display: flex;
+    justify-content: center;
+}

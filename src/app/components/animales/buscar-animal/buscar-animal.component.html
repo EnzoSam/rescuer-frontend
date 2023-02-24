@@ -1,0 +1,38 @@
+<mat-drawer-container>
+
+    <mat-drawer #drawer  mode="push">
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-icon-button (click)="drawer.toggle(); showFiller= !showFiller" color="primary">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <app-filtro-animales [paginador]="paginador" (listadoResponse)="cambioListado($event)"></app-filtro-animales>
+    </mat-drawer>
+
+    <mat-drawer-content>
+
+        <div class="busqueda-top">
+            <div class="titulo">
+                <h1 *ngIf="tipoAlerta === 1">Encontrá a tu nueva mascota</h1>
+                <h1 *ngIf="tipoAlerta === 2">Animales Extraviados</h1>
+            </div>
+            <div class="acciones">
+                <button mat-raised-button color="primary" [routerLink]="['../../nueva-alerta', tipoAlerta]">Publicar</button>
+            </div>
+        </div>
+        
+        <button *ngIf="showFiller" mat-icon-button (click)="drawer.toggle(); showFiller= !showFiller"  color="primary">
+            <mat-icon>filter_alt</mat-icon>
+        </button>
+
+
+        <app-publicaciones [publicaciones]="publicaciones"></app-publicaciones>
+        <mat-paginator #paginador [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[2, 5, 10, 25, 100]"
+              aria-label="Select page">
+        </mat-paginator>
+
+    </mat-drawer-content>
+
+</mat-drawer-container>

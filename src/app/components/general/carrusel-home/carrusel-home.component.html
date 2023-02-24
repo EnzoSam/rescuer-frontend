@@ -1,0 +1,13 @@
+<div class="contenedor" *ngIf="sliderActual">
+    <h1 class="titulo-slider">
+        {{sliderActual.titulo}}
+    </h1>
+    <h1 class="subtitulo-slider">
+        {{sliderActual.subtitulo}}
+    </h1>
+    <div>
+        <a href="#">
+            <img class="imagen-slider" src={{urlRecursosGeneral}}{{sliderActual.imagen}} alt="slider">
+        </a>
+    </div>
+</div> 

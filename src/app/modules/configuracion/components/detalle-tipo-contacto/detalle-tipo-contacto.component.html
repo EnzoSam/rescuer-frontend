@@ -1,0 +1,36 @@
+<div class="container col-md-4">
+    <form  #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{page_title}}</mat-card-title>
+          <mat-card-subtitle>{{page_subTitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>   
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Nombre</mat-label>
+              <input #nombre="ngModel" name="nombre" [(ngModel)]= "tipoContacto.nombre" required matInput placeholder="Nombre">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Descripcion</mat-label>
+              <input #descripcion="ngModel" name="descripcion" [(ngModel)]= "tipoContacto.descripcion" required matInput placeholder="Descripcion">
+            </mat-form-field>
+          </p>                  
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Orden</mat-label>
+              <input #orden="ngModel" name="orden" [(ngModel)]= "tipoContacto.orden" required matInput placeholder="Orden">
+            </mat-form-field>
+          </p>            
+                           
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+      </div>
+    </form>
+    </div>

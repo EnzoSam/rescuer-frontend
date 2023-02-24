@@ -1,0 +1,6 @@
+<div class="listado-container">
+    <div  fxFlex="0 1 calc(18%)" fxFlex.lt-md="0 1 calc(50% - 32px)"  fxFlex.lt-sm="100%" 
+        *ngFor="let animal of listadoAnimales">
+        <app-animal-listado  [animal]="animal"></app-animal-listado>
+    </div>
+</div>

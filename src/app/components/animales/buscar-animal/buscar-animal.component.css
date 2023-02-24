@@ -1,0 +1,39 @@
+h1{
+    text-align: center;
+}
+
+mat-drawer-container
+{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+mat-drawer-content
+{
+    display: flex;
+    flex-direction: column;
+}
+
+mat-drawer
+{
+    padding: 20px;
+}
+
+.busqueda-top
+{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    margin-top: 10px;
+}
+
+.titulo
+{
+    flex-grow: 1;
+}
+
+.acciones
+{
+    margin-right: 10px;
+    font-size: small;
+}

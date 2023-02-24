@@ -1,0 +1,112 @@
+
+<div fxLayoutAlign="center center">
+<div class="container-tipo-alerta" *ngIf="paso===1">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Elija el tipo de alerta</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <app-opcion-alerta  (click)="adopcion()" [titulo]="'Adopcion'" 
+        [descripcion]="'Tengo un animal en adopcion. Es uno solo y tiene nombre'"
+        [icono]="'pets'">
+      </app-opcion-alerta>
+
+      <app-opcion-alerta  (click)="soloPublicaAlerta()" [titulo]="'Solo anunciar'" 
+      [descripcion]="'Tengo uno o mas animales en adopcion. Son varios o no tiene nombre'"
+      [icono]="'add_alert'">
+      </app-opcion-alerta>
+
+      <app-opcion-alerta  (click)="extravio()" [titulo]="'Extravio'" 
+      [descripcion]="'Se me perdió mi mascota y quiero encontrarla.'"
+      [icono]="'search'">
+      </app-opcion-alerta>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="paso===3 && tipoAlerta!=0">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{page_title}}</mat-card-title>
+          <mat-card-subtitle>{{page_subTitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Tipo Animal</mat-label>
+              <mat-select (selectionChange)="cambioTipoAnimal($event.value)" name="tipoAnimal"
+                [(ngModel)]="animal.tipoAnimal" [compareWith]="compareObjects">
+                <mat-option [value]="t" *ngFor="let t of tiposAnimales">{{t.nombre}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <p *ngIf="!sinNombre">
+            <mat-form-field appearance="standard">
+              <mat-label>Sexo</mat-label>
+              <mat-select name="sexo" [(ngModel)]="animal.sexo" [compareWith]="compareObjects">
+                <mat-option [value]="s" *ngFor="let s of sexos">{{s.nombre}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <p *ngIf="!sinNombre">
+            <mat-form-field appearance="standard">
+              <mat-label>Tamaño</mat-label>
+              <mat-select name="tamanio" [(ngModel)]="animal.tamanio" [compareWith]="compareObjects">
+                <mat-option [value]="tam" *ngFor="let tam of tamanios">{{tam.nombre}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>{{labelNombre}}</mat-label>
+              <input #nombre="ngModel" name="nombres" [(ngModel)]="animal.nombres" required matInput
+                [placeholder]="labelNombre">
+            </mat-form-field>
+          </p>
+          <!--p>
+            <mat-form-field appearance="standard">
+              <mat-label>Apellidos</mat-label>
+              <input #apellidos="ngModel" name="apellidos" [(ngModel)]="animal.apellidos" required matInput
+                placeholder="Apellidos">
+            </mat-form-field>
+          </p-->
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Descripcion</mat-label>
+              <input #descripcion="ngModel" name="descripcion" [(ngModel)]="animal.descripcion" required matInput
+                placeholder="Descripcion">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-slide-toggle [name]="a._id" [(ngModel)]="a.seleccionado" *ngFor="let a of atributos">
+              {{a.nombre}}
+            </mat-slide-toggle>
+          </p>
+          <p *ngIf="tipoAlerta == 1 && !sinNombre">
+            <mat-slide-toggle color="primary" #requierePostulacion="ngModel" name="requierePostulacion" [(ngModel)]="animal.requierePostulacion">
+                Requiere postulación
+            </mat-slide-toggle>
+          </p>          
+          <div class="form-group">
+            <label for="imagen">Imagen</label>
+
+            <div *ngIf="animal && animal.imagen">
+              <img src={{urlRecursosAnimales}}{{animal.imagen}} class="avatar_edit">
+            </div>
+          </div>
+
+          <app-subir-archivo (archivoSubido)="imagenSubida($event)" [urlBase]="urlUploadAnimales"></app-subir-archivo>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </form>
+</div>
+</div>

@@ -1,0 +1,27 @@
+<ng-container *ngIf="itemMenu && (!itemMenu.items || itemMenu.items.length === 0)">
+    <button mat-menu-item
+*ngIf="itemMenu"
+    fxShow="{{(invert? !itemMenu.showOnDesktop:itemMenu.showOnDesktop)}}" 
+    fxShow.xs="{{(invert? !itemMenu.showOnMobile:itemMenu.showOnMobile)}}"
+    fxShow.sm="{{(invert? !itemMenu.showOnTablet:itemMenu.showOnTablet)}}"
+    routerLink="{{itemMenu.route}}">
+    <mat-icon>{{itemMenu.icon}}</mat-icon>
+    {{itemMenu.label}}
+</button>
+</ng-container>
+
+<ng-container *ngIf="itemMenu && itemMenu.items && itemMenu.items.length > 0">
+<button mat-menu-item [matMenuTriggerFor]="aboveSubMenu"
+    fxShow="{{(invert? !itemMenu.showOnDesktop:itemMenu.showOnDesktop)}}" 
+    fxShow.xs="{{(invert? !itemMenu.showOnMobile:itemMenu.showOnMobile)}}"
+    fxShow.sm="{{(invert? !itemMenu.showOnTablet:itemMenu.showOnTablet)}}"
+    routerLink="{{itemMenu.route}}">
+    <mat-icon>{{itemMenu.icon}}</mat-icon>
+    {{itemMenu.label}}
+</button> 
+<mat-menu #aboveSubMenu="matMenu">
+    <app-item-menu  *ngFor="let i of itemMenu.items"
+            [itemMenu]="i"
+            [invert]="invert"></app-item-menu>
+    </mat-menu>
+</ng-container>

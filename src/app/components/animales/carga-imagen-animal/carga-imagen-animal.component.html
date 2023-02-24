@@ -1,0 +1,10 @@
+<div *ngIf="animal"  class="contenedor">
+
+    <div *ngIf="animal.imagen">
+        <label for="imagen">Imagen</label>
+      <img src={{urlRecursosAnimales}}{{animal.imagen}} class="avatar_edit">
+    </div>
+
+    <app-subir-archivo (archivoSubido)="imagenSubida($event)" [urlBase]="urlUploadAnimales"></app-subir-archivo>
+  </div>
+

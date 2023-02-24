@@ -1,0 +1,22 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.contenedor-cards
+{
+    display: flex;
+    gap: 20px;
+    justify-content: center;    
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.titulo
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}

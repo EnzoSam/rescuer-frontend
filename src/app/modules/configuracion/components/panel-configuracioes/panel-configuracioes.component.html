@@ -1,0 +1,36 @@
+<mat-sidenav-container>
+  <mat-sidenav fxLayout.lg="20" fxLayout.sm="80" #drawer 
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'side' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Configuraciones</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item  [routerLink]="['/configuracion/panel/atributos']">Atributos</a>
+      <a mat-list-item  [routerLink]="['/configuracion/panel/tipos-animales']">Tipo de Animales</a>
+      <a mat-list-item  [routerLink]="['/configuracion/panel/tipos-contactos']">Tipos de Contactos</a>            
+      <a mat-list-item  [routerLink]="['/configuracion/panel/datos-utiles']">Datos Utiles</a>
+      <a mat-list-item [routerLink]="['/configuracion/panel/lugares']">Lugares</a>
+      <a mat-list-item [routerLink]="['/configuracion/panel/tipos-lugares']">Tipos Lugares</a>
+      <a mat-list-item [routerLink]="['/configuracion/panel/sliders']">Sliders</a>
+      <a mat-list-item href="#">Usuarios</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content fxFlex>
+    <mat-toolbar  *ngIf="isHandset$ | async">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>          
+    </mat-toolbar>
+    
+
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>
+

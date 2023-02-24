@@ -1,0 +1,28 @@
+.contenedor
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    min-height: 100vh;    
+}
+
+.cuenta-valida
+{
+    color: forestgreen;
+    font-weight: bold;
+}
+
+mat-card-subtitle
+{
+    max-width: 250px;
+}
+
+mat-card-content
+{
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field{
+    display: block;
+  }

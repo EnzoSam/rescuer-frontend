@@ -1,0 +1,65 @@
+<div fxLayout.lg="row" fxLayoutGap.lg="20px" fxLayout.sm="column" class="contenedor-detalle"
+  *ngIf="animal && animal != undefined">
+  <div fxFlex.lg="75" fxFlex.md="100">
+    <mat-card class="card-animal">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>
+            {{animal.nombres}}
+          </mat-card-title>
+        </mat-card-title-group>
+        <div *ngIf="animal.usuario && getIdentity()._id == animal.usuario._id" fxFlex fxLayoutAlign="end">
+          <button mat-icon-button [matMenuTriggerFor]="accionesAnimal">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #accionesAnimal="matMenu">
+            <button mat-menu-item (click)="eliminar()">
+              <mat-icon>delete</mat-icon>
+              <span>Eliminar</span>
+            </button>
+            <button mat-menu-item [routerLink]="['../../editar/', animal._id]">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button *ngIf="animal.estado == 1" mat-menu-item (click)="confirmarAdopcion()">
+              <mat-icon>check_circle</mat-icon>
+              <span>{{animal.nombres}} ya fue adoptado</span>
+            </button>
+            <button *ngIf="animal.estado == 2" mat-menu-item (click)="confirmarEncontrado()">
+              <mat-icon>check_circle_outline</mat-icon>
+              <span>{{animal.nombres}} ya fue encontrado</span>
+            </button>
+          </mat-menu>
+        </div>
+      </mat-card-header>
+      <img *ngIf="animal.imagen" mat-card-image class="card-animal-imagen" src={{urlRecursos}}{{animal.imagen}}
+        alt={{animal.nombres}}>
+      <mat-card-content>
+        <p>
+          {{animal.descripcion}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex.lg="25" fxFlex.md="100" fxFlex.sm="100">
+    <mat-card *ngIf="animal.usuario">
+      <mat-card-header>
+        <mat-card-title>Usuario</mat-card-title>
+        <mat-card-subtitle>{{animal.usuario.nombres}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content *ngIf="animal && mostrarContacto && animal.usuario.contactos">
+        <p *ngFor="let c of animal.usuario.contactos">
+          {{c.tipoContacto.nombre}}: {{c.referencia }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button *ngIf="!postulacionUsuario &&  getIdentity()._id != animal.usuario._id && !animal.requierePostulacion"
+          mat-button (click)="contactar()">Contactar</button>
+        <button *ngIf="!postulacionUsuario &&  getIdentity()._id != animal.usuario._id && animal.requierePostulacion"
+          mat-button (click)="postularme()">Postularme</button>
+        <button mat-raised-button color="accent" *ngIf="postulacionUsuario" mat-button (click)="verPostulacion()">Ya
+          tenés una postulación</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

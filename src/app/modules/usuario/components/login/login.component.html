@@ -1,0 +1,50 @@
+<div class="contenedor">
+  <div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{page_title}}</mat-card-title>
+          <mat-card-subtitle>
+            {{page_subTitle}}
+            <div class="cuenta-valida" *ngIf="validado">
+              <p>Su cuenta ha sido validada con exito</p>
+            </div>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" #email="ngModel" name="email" [(ngModel)]="usuario.email" required matInput
+                placeholder="Email">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+          <div>
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" #password="ngModel" name="password" [(ngModel)]="usuario.password" required
+                  matInput placeholder="Contraseña">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Iniciar sesión</button>
+          <button mat-button color="primary" (click)="registrar()">Registrarse</button>
+
+        </mat-card-actions>
+      </mat-card>
+    </form>
+    <div>
+      <p>
+        <button mat-button color="primary" (click)="olvidoPassword()">Olvidé mi Contraseña</button>
+      </p>
+      <p *ngIf="resetPasswordHabilidado" xLayoutAlign="center center">
+        Te enviamos un email con las instrucciones para cambiar tu contraseña
+      </p>
+    </div>
+  </div>
+</div>

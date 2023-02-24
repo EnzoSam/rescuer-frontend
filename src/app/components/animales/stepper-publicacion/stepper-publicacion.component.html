@@ -1,0 +1,43 @@
+<mat-stepper #steeper orientation="vertical">
+    <mat-step>
+      <ng-template matStepLabel>Tipo de animal</ng-template>
+      <ng-template matStepContent>
+        <app-seleccion-tipo (seleccionoTipo)="tipoAnimalClick($event,steeper)" [arrayTipos]="obtenerListITipoAnimal()"></app-seleccion-tipo>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Sexo</ng-template>
+      <ng-template matStepContent>
+        <app-seleccion-tipo (seleccionoTipo)="sexoClick($event,steeper)" [arrayTipos]="obtenerListSexoAnimal()"></app-seleccion-tipo>
+        <button mat-button matStepperPrevious>Atras</button>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Tamaño</ng-template>
+      <ng-template matStepContent>
+        <app-seleccion-tipo (seleccionoTipo)="tamanioClick($event,steeper)" [arrayTipos]="obtenerListTamanio()"></app-seleccion-tipo>
+        <button mat-button matStepperPrevious>Atras</button>
+      </ng-template>
+    </mat-step>    
+    <mat-step>
+      <ng-template matStepLabel>Descripcion</ng-template>
+      <ng-template matStepContent>
+      <app-ingreso-identificacion-animal [animal]="animal" (onSiguiente)="completoNombre(steeper)"></app-ingreso-identificacion-animal>
+      </ng-template>
+      <button mat-button matStepperPrevious>Atras</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Imagen</ng-template>
+      <ng-template matStepContent>
+      <app-carga-imagen-animal [animal]="animal" (onSeleccionoImagen)="imagenSubida(steeper)"></app-carga-imagen-animal>
+      </ng-template>
+      <button mat-button matStepperPrevious>Atras</button>
+    </mat-step>   
+    <mat-step>
+      <ng-template matStepLabel>Finalizar</ng-template>
+      <ng-template matStepContent>
+        <app-finalizar-publicacion-animal [animal]="animal" [esEdicion]="esEdicion"></app-finalizar-publicacion-animal>
+      </ng-template>
+      <button mat-button matStepperPrevious>Atras</button>
+    </mat-step>      
+  </mat-stepper>

@@ -1,0 +1,58 @@
+<br>
+<div class="container">
+<form  #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <div>  
+      <h1>{{page_title}}</h1>
+      <h2>{{page_subTitle}}</h2>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>E-Mail</mat-label>
+          <input disabled type="email" #email="ngModel" name="email" [(ngModel)]= "usuario.email" required matInput placeholder="E-mail">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Nombre</mat-label>
+          <input #nombre="ngModel" name="nombre" [(ngModel)]= "usuario.nombres" required matInput placeholder="Nombres">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Apellidos</mat-label>
+          <input #apellidos="ngModel" name="apellidos" [(ngModel)]= "usuario.apellidos" required matInput placeholder="Apellidos">
+        </mat-form-field>
+      </p>      
+      
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Provincia</mat-label>
+          <mat-select [(ngModel)]="provinciaElejida" (selectionChange)="cambioProvincia($event.value)" name="provincia"
+            [compareWith]="compareObjects">
+            <mat-option [value]="p" *ngFor="let p of provincias">{{p.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>      
+      </p>
+
+      <p *ngIf="provinciaElejida">
+        <mat-form-field appearance="standard">
+          <mat-label>Ciudad</mat-label>
+          <mat-select name="ciudad"
+            [(ngModel)]="usuario.lugar" [compareWith]="compareObjects">
+            <mat-option [value]="c" *ngFor="let c of ciudades">{{c.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+
+      <p>  
+        <mat-form-field appearance="standard">
+          <mat-label>Contacto</mat-label>
+          <input type="tel" #inputContacto1="ngModel" name="inputContacto1" [(ngModel)]= "contacto1.referencia" matInput placeholder="Contacto">
+        </mat-form-field>
+      </p>     
+             
+      <p>
+      <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Guardar</button>
+        </p>
+  </div>
+</form>
+</div>

@@ -1,0 +1,26 @@
+.opcion-alerta
+{
+    height: auto;
+    width: auto;
+}
+.container-tipo-alerta{  
+    width:auto;
+    height:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 10%;
+    flex-direction: column;
+    
+  }
+
+  .avatar_edit{
+    width: 80px;
+    margin-bottom: 10px;
+}  
+
+.column-content
+{
+  display: flex;
+  flex-direction: column;
+}

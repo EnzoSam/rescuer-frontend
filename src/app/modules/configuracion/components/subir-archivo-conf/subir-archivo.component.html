@@ -1,0 +1,9 @@
+<form [formGroup]="imageForm">
+        <input
+            type="file"
+            id="file"
+            placeholder="File"
+            (change)="onFileChange($event)"
+            #fileInput 
+            formControlName="file">
+</form>

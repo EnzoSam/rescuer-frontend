@@ -1,0 +1,28 @@
+<div class="contenedor">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{page_title}}</mat-card-title>
+                <mat-card-subtitle>{{page_subTitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+            <p>
+               Te enviamos a {{email}} un link para activar tu cuenta.
+            </p>   
+            <p>
+                Si no encontrás el email, revisá la carpeta de spam
+            </p>               
+            </mat-card-content>
+            <mat-card-actions>                
+                <button [disabled]="!botonHabilitado" type="button" mat-button color="primary" 
+                (click)="reenviarCodigo()">
+                Reenviar codigo {{!botonHabilitado? '('+ contador + ' seg.)':''}}
+                </button>
+            </mat-card-actions>
+        </mat-card>
+
+    </form>
+    <p>
+        
+    </p>
+</div>

@@ -1,0 +1,27 @@
+<div *ngIf="animal" class="contenedor">
+    <div *ngIf="!esEdicion && tieneNombre == undefined" >
+        <div id="pregunta">¿Tinene nombre?</div>        
+        <span><button  mat-raised-button color="primary" (click)="siClick()">Si</button></span>
+        <span><button mat-raised-button color="accent"  (click)="noClick()">No</button></span>
+    </div>
+    <div *ngIf="tieneNombre != undefined">
+        <p *ngIf="tieneNombre === true">
+            <mat-form-field appearance="standard">
+              <mat-label>{{labelNombre}}</mat-label>
+              <input #nombre="ngModel" name="nombres" [(ngModel)]="animal.nombres" required matInput
+                [placeholder]="labelNombre">
+            </mat-form-field> 
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Ingrese una descripcion</mat-label>
+
+              <textarea  nput type="text" #descripcion="ngModel" name="descripcion" [(ngModel)]="animal.descripcion" required matInput
+                placeholder="Descripcion"></textarea>
+            </mat-form-field>
+          </p>  
+          <p>
+            <button mat-raised-button color="accent"  (click)="siguiente()">Siguiente</button>
+          </p>      
+    </div>
+</div>

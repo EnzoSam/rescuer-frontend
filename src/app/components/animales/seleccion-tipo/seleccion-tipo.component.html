@@ -1,0 +1,6 @@
+<div class="contenedor">
+    <div class="contenedor-cards">
+        <app-card-tipo-seleccion (tipoClick)="onSeleccionoTipo(t)"
+        [tipo]="t" *ngFor="let t of arrayTipos"></app-card-tipo-seleccion>
+    </div>
+</div>

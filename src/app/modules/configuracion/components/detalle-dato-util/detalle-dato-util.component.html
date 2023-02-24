@@ -1,0 +1,87 @@
+<div fxLayout="row">
+  <div fxLayout="column">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-grou">  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{page_title}}</mat-card-title>
+          <mat-card-subtitle>{{page_subTitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>   
+          <div class="scroll-div">
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Titulo</mat-label>
+              <input #titulo="ngModel" name="titulo" [(ngModel)]= "dato.titulo" required matInput placeholder="Titulo">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Subtitulo</mat-label>
+              <input #subtitulo="ngModel" name="subtitulo" [(ngModel)]= "dato.subtitulo" required matInput placeholder="Subtitulo">
+            </mat-form-field>
+          </p>  
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Telefono</mat-label>
+              <input type="tel" #telefono="ngModel" name="telefono" [(ngModel)]= "dato.telefono" required matInput placeholder="Telefono">
+            </mat-form-field>
+          </p>        
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Celular</mat-label>
+              <input  #celular="ngModel" name="celular" [(ngModel)]= "dato.celular" required matInput placeholder="Celular">
+            </mat-form-field>
+          </p>       
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Email</mat-label>
+              <input type="email" #email="ngModel" name="email" [(ngModel)]= "dato.email" required matInput placeholder="Email">
+            </mat-form-field>
+          </p>  
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Web</mat-label>
+              <input type="url" #web="ngModel" name="web" [(ngModel)]= "dato.web" required matInput placeholder="Web">
+            </mat-form-field>
+          </p>   
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Direccion</mat-label>
+              <input  #direccion="ngModel" name="direccion" [(ngModel)]= "dato.direccion" required matInput placeholder="direccion">
+            </mat-form-field>
+          </p>   
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Latitud</mat-label>
+              <input type="number" #latitud="ngModel" name="latitud" [(ngModel)]= "dato.latitud" required matInput placeholder="latitud">
+            </mat-form-field>
+          </p>    
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Longitud</mat-label>
+              <input type="number" #longitud="ngModel" name="longitud" [(ngModel)]= "dato.longitud" required matInput placeholder="longitud">
+            </mat-form-field>
+          </p>                                                                         
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Orden</mat-label>
+              <input type="number" #orden="ngModel" name="orden" [(ngModel)]= "dato.orden" required matInput placeholder="Orden">
+            </mat-form-field>
+          </p>            
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Estado</mat-label>
+              <input type="number" #estado="ngModel" name="estado" [(ngModel)]= "dato.estado" required matInput placeholder="Estado">
+            </mat-form-field>
+          </p>          
+        </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+      </div>
+    </form>
+    </div>
+  </div>

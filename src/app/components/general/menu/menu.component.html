@@ -1,0 +1,16 @@
+<mat-toolbar class="menu" color="primary">
+  <span class="nombre-sitio">{{nombreSitio}}</span>
+  <app-item-menu  *ngFor="let item of menuItems" 
+  [itemMenu]="item">
+  </app-item-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="dropMenu" [fxShow.lg]="false">
+      <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #dropMenu="matMenu">
+        <app-item-menu  *ngFor="let item of menuItems" 
+        [itemMenu]="item"
+        [invert]="true">
+        </app-item-menu>
+  </mat-menu>
+</mat-toolbar>

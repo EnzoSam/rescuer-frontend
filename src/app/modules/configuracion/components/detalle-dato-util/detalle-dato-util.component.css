@@ -1,0 +1,9 @@
+.scroll-div
+{
+    overflow: auto;
+    height: 70vh;
+}
+
+.div-contenedor{
+    height: 100%;
+}

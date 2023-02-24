@@ -1,0 +1,10 @@
+.menu {
+    display: flex;    
+  }
+
+.nombre-sitio
+{
+  display: flex;
+  flex-grow: 1;
+}
+

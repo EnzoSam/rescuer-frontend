@@ -1,0 +1,18 @@
+<mat-card *ngIf="tipo">
+    <mat-card-header>
+
+    </mat-card-header>
+    <mat-card-content>
+
+        <div *ngIf="tieneUrlImagen()">
+            <img (click)="onClick()" [src]="imagen()" [alt]="tipo.titulo">
+        </div>
+        <mat-icon *ngIf="!tieneUrlImagen()" (click)="onClick()" color="primary" >
+            {{tipo.imagen}}
+        </mat-icon>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <div (click)="onClick()">{{tipo.titulo}}</div>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,34 @@
+<div class="container col-md-4" *ngIf="lugar">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{page_title}}</mat-card-title>
+      <mat-card-subtitle>{{page_subTitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      
+        <p>
+          <mat-form-field appearance="standard">
+            <mat-label>Nombre</mat-label>
+            <input #nombre="ngModel" name="nombre" [(ngModel)]="lugar.nombre" required matInput placeholder="Nombre">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="standard">
+            <mat-label>Tipo</mat-label>
+            <mat-select name="tipo" [(ngModel)]="lugar.tipo" [compareWith]="compareObjects">
+              <mat-option [value]="t" *ngFor="let t of todosLosTipos">{{t.nombre}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <app-lugares [lugarPadre]="lugar"></app-lugares>
+        </p>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Guardar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+</div>

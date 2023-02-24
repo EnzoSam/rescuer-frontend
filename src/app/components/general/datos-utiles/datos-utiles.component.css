@@ -1,0 +1,14 @@
+h1
+{
+    text-align: center;
+}
+
+.container-datos
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 20px;
+    min-height: 100vh;
+    margin-left: 20px;
+}

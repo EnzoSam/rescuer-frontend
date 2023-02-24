@@ -1,0 +1,45 @@
+<div class="container col-md-4">
+    <form  #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{page_title}}</mat-card-title>
+          <mat-card-subtitle>{{page_subTitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>   
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Nombre</mat-label>
+              <input #nombre="ngModel" name="nombre" [(ngModel)]= "tipoAnimal.nombre" required matInput placeholder="Nombre">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Referencia</mat-label>
+              <input #referencia="ngModel" name="referencia" [(ngModel)]= "tipoAnimal.referencia" required matInput placeholder="Referencia">
+            </mat-form-field>
+          </p>                  
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Orden</mat-label>
+              <input #orden="ngModel" name="orden" [(ngModel)]= "tipoAnimal.orden" required matInput placeholder="Orden">
+            </mat-form-field>
+          </p>            
+                
+          <p>
+            <mat-form-field appearance="standard">
+              <mat-label>Imagen</mat-label>
+              <input #imagen="ngModel" name="imagen" [(ngModel)]= "tipoAnimal.imagen" matInput placeholder="Imagen">
+            </mat-form-field>
+          </p>  
+
+          <app-subir-archivo-conf (archivoSubido)="imagenSubida($event)" [urlBase]="urlBaseIamgenes"></app-subir-archivo-conf>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+      </div>
+    </form>
+    </div>

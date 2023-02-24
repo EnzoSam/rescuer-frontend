@@ -1,0 +1,23 @@
+<article>
+<div *ngIf="animal">
+    <mat-card class="animal-card">
+        <mat-card-header>
+          <mat-card-title>{{animal.nombres}}</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <a mat-card-image [routerLink]="['../../detalle/', animal._id]">
+            <img class="imagen-animal"  src={{urlRecursos}}{{animal.imagen}} alt={{animal.nombres}}>
+        </a>
+        <mat-card-content> 
+          <p>
+            {{animal.descripcion}}
+          </p>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-button  [routerLink]="['../../detalle/', animal._id]">Conocer mas</button>
+            <button mat-button >Compartir</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </article>

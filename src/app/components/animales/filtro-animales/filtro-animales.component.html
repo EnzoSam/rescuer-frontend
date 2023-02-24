@@ -1,0 +1,44 @@
+<form #filtroForm>
+    <h2>Filtros</h2>
+
+    <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Provincia</mat-label>
+          <mat-select [(ngModel)]="provinciaElejida" (selectionChange)="cambioProvincia($event.value)" name="provincia"
+            [compareWith]="compareObjects">
+            <mat-option [value]="p" *ngFor="let p of provincias">{{p.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>      
+      </p>
+
+      <p *ngIf="provinciaElejida">
+        <mat-form-field appearance="standard">
+          <mat-label>Ciudad</mat-label>
+          <mat-select name="ciudad"
+            [(ngModel)]="filtro.lugar" [compareWith]="compareObjects">
+            <mat-option [value]="c" *ngFor="let c of ciudades">{{c.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+
+    <p>
+        <mat-slide-toggle color="primary" [name]="t.nombre" (change)="cambioFiltro()" [(ngModel)]="t.seleccionado"
+            *ngFor="let t of filtro.tipos">
+            {{t.nombre}}
+        </mat-slide-toggle>
+    </p>
+    <hr>
+    <p>
+        <mat-slide-toggle color="primary" [name]="tam.nombre" (change)="cambioFiltro()" [(ngModel)]="tam.seleccionado"
+            *ngFor="let tam of filtro.tamanios">
+            {{tam.nombre}}
+        </mat-slide-toggle>
+    </p>
+    <hr>
+    <p>
+        <mat-slide-toggle color="primary" [name]="s.nombre" (change)="cambioFiltro()" [(ngModel)]="s.seleccionado"
+            *ngFor="let s of filtro.sexos">
+            {{s.nombre}}
+        </mat-slide-toggle>
+    </p>
+</form>
